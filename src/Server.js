@@ -106,6 +106,8 @@ routerProfiles.post("/profileadd", async (req, res) => {
   let response;
   try {
     const add = req.body;
+    add.enable === "true" ? add.enable=true :add.enable=false;
+    add.busquedaActiva === "true" ? add.busquedaActiva=true :add.busquedaActiva=false;
     response = await fileManager.save(add);
   } catch (e) {
     console.error(e);

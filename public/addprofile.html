@@ -13,9 +13,19 @@
     <div>
         <fieldset>
         <form action="/profileadd" method="POST">
-            Title: <input type="text" name="title" />
-            Price: <input type="text" name="price" />
-            thumbnail: <input type="text" name="thumbnail" />
+         <input type="hidden" name="enable" value="true"/>
+            Linkedin: <input type="text" name="linkedin" />
+            Area: <input type="text" name="areaBuscada" />
+            Posicion: <input type="text" name="posicionBuscada" />
+            Señority: <input type="text" name="señority" />
+            Empresa actual: <input type="text" name="empresaActual" />
+            <label> 
+            <label>Busqueda activa : </label>
+            <label>SI</label>
+            <input type="radio" name="busquedaActiva" value="true" />
+            <label>NO</label>
+            <input type="radio" name="busquedaActiva" value="false" />
+            </label>
             <button>Enviar</button>
         </form>
     </fieldset>
