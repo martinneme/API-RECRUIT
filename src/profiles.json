@@ -1,0 +1,31 @@
+[{
+    "enable": true,
+    "linkedin": "https://www.linkedin.com/in/martinneme/",
+    "señority": "jr",
+    "areaBuscada": "Tecnologia",
+    "posicionBuscada": "QA",
+    "busquedaActiva": true,
+    "empresaActual": "Interbanking",
+    "id": 1,
+    "clavePrivada": "Y8i4X6b4v1B367F9"
+}, {
+    "enable": true,
+    "linkedin": "https://www.linkedin.com/in/martinneme/",
+    "señority": "jr",
+    "areaBuscada": "Tecnologia",
+    "posicionBuscada": "React Dev",
+    "busquedaActiva": true,
+    "empresaActual": "Interbanking",
+    "id": 2,
+    "clavePrivada": "J3U9W4G0d5M184G0"
+}, {
+    "enable": true,
+    "linkedin": "https://www.linkedin.com/in/martinneme/",
+    "señority": "jr",
+    "areaBuscada": "Tecnologia",
+    "posicionBuscada": "Java Dev",
+    "busquedaActiva": true,
+    "empresaActual": "Interbanking",
+    "id": 3,
+    "clavePrivada": "m6I4b6C2N1A0U2M0"
+}]
