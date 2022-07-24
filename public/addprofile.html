@@ -14,17 +14,19 @@
         <fieldset>
         <form action="/profileadd" method="POST">
          <input type="hidden" name="enable" value="true"/>
-            Linkedin: <input type="text" name="linkedin" />
-            Area: <input type="text" name="areaBuscada" />
-            Posicion: <input type="text" name="posicionBuscada" />
-            Señority: <input type="text" name="señority" />
-            Empresa actual: <input type="text" name="empresaActual" />
+            Linkedin: <input type="text" name="linkedin" required/>
+            Empresa actual: <input type="text" name="empresaActual" required/>
+            Posicion actual: <input type="text" name="posicionActual" required/>
+            Señority Actual: <input type="text" name="señorityActual"required/>
+            Area buscada: <input type="text" name="areaBuscada" required/>
+            Posicion buscada: <input type="text" name="posicionBuscada" required/>
+            Señority en Posicion Buscada: <input type="text" name="señorityBuscada" required/>
             <label> 
             <label>Busqueda activa : </label>
             <label>SI</label>
-            <input type="radio" name="busquedaActiva" value="true" />
+            <input type="radio" name="busquedaActiva" value="true" required/>
             <label>NO</label>
-            <input type="radio" name="busquedaActiva" value="false" />
+            <input type="radio" name="busquedaActiva" value="false" required/>
             </label>
             <button>Enviar</button>
         </form>

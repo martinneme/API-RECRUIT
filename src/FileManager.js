@@ -17,7 +17,7 @@ export default class FileManager{
    obj.clavePrivada = this.makePrivatePass(8)
    cont.push(obj)
    await this.writeFile(JSON.stringify(cont))
-   return obj.id
+   return "Creado! Guarde su SecretID: "+obj.clavePrivada
   }catch(e){
     
    console.error(e)
@@ -27,7 +27,7 @@ export default class FileManager{
 
  makePrivatePass(length){
   let result = ''
-  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+  const characters = 'ABCDEFGHIJKLMNOP%$#QRSTUVWXYZabcdefghijklmnopqrstuvwxyz+-'
   const numbers = '0123456789'
   for (let i = 0; i < length; i++ ) {
     result += characters.charAt(Math.floor(Math.random() * characters.length))+numbers.charAt(Math.floor(Math.random() * numbers.length));

@@ -1,0 +1,92 @@
+{
+	"info": {
+		"_postman_id": "755dee2e-68ca-4a39-8e1f-094712f88f28",
+		"name": "Recruit -API REST",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "ADD PROFILE",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"enable\": 'enable',\r\n  \"linkedin\": 'https://www.linkedin.com/in/sofia-oyarzabal-5b61601a4/',\r\n  \"areaBuscada\": 'Diseño',\r\n  \"posicionBuscada\": 'UX',\r\n  \"señority\": 'Ssr',\r\n  \"empresaActual\": 'Freelance',\r\n  \"busquedaActiva\": 'false'\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/profileadd",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"profileadd"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET product by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/profiles/1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"profiles",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET product with PARAMS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/searchProfiles?posicionBuscada=QA",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"searchProfiles"
+					],
+					"query": [
+						{
+							"key": "posicionBuscada",
+							"value": "QA"
+						},
+						{
+							"key": "areaBuscada",
+							"value": "Tecnologia",
+							"disabled": true
+						},
+						{
+							"key": "señority",
+							"value": "Ssr",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

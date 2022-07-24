@@ -1,41 +1,25 @@
 [{
     "enable": true,
     "linkedin": "https://www.linkedin.com/in/martinneme/",
-    "señority": "jr",
-    "areaBuscada": "Tecnologia",
-    "posicionBuscada": "QA",
-    "busquedaActiva": true,
     "empresaActual": "Interbanking",
+    "posicionActual": "QA",
+    "señorityActual": "Jr",
+    "areaBuscada": "Tecnologia",
+    "posicionBuscada": "Desarrollo",
+    "señorityBuscada": "Jr",
+    "busquedaActiva": true,
     "id": 1,
-    "clavePrivada": "Y8i4X6b4v1B367F9"
-}, {
-    "enable": true,
-    "linkedin": "https://www.linkedin.com/in/martinneme/",
-    "señority": "jr",
-    "areaBuscada": "Tecnologia",
-    "posicionBuscada": "React Dev",
-    "busquedaActiva": true,
-    "empresaActual": "Interbanking",
-    "id": 2,
-    "clavePrivada": "J3U9W4G0d5M184G0"
-}, {
-    "enable": true,
-    "linkedin": "https://www.linkedin.com/in/martinneme/",
-    "señority": "jr",
-    "areaBuscada": "Tecnologia",
-    "posicionBuscada": "Java Dev",
-    "busquedaActiva": true,
-    "empresaActual": "Interbanking",
-    "id": 3,
-    "clavePrivada": "m6I4b6C2N1A0U2M0"
+    "clavePrivada": "P1F3V7f4Y8p4a2N7"
 }, {
     "enable": true,
     "linkedin": "https://www.linkedin.com/in/sofia-oyarzabal-5b61601a4/",
+    "empresaActual": "Freelance",
+    "posicionActual": "DG",
+    "señorityActual": "Ssr",
     "areaBuscada": "Diseño",
     "posicionBuscada": "UX",
-    "señority": "Ssr",
-    "empresaActual": "Freelance",
-    "busquedaActiva": false,
-    "id": 4,
-    "clavePrivada": "x0o959q1L7H6y821"
+    "señorityBuscada": "Jr",
+    "busquedaActiva": true,
+    "id": 2,
+    "clavePrivada": "B2u5P3h6S7g5I7P8"
 }]
