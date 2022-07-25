@@ -57,7 +57,7 @@ routerProfiles.get("/searchProfiles", async (req, res) => {
   let profiles = [];
   try {
     response = await fileManager.getAll();
-   
+
     profiles = await response.map((profile) => {
       let {
         linkedin,
@@ -67,26 +67,38 @@ routerProfiles.get("/searchProfiles", async (req, res) => {
         posicionBuscada,
         empresaActual,
         busquedaActiva,
-        posicionActual
+        posicionActual,
       } = profile;
 
-const profileClone = Object.create(profile);
+      const profileClone = Object.create(profile);
 
-      if(Object.keys(params).length){
-        if(!params.posicionBuscada) profileClone.posicionBuscada=undefined;
-        if(!params.areaBuscada) profileClone.areaBuscada=undefined;
-        if(!params.señorityActual) profileClone.señorityActual=undefined;
-        if(!params.señorityBuscada) profileClone.señorityBuscada=undefined;
-        if(!params.busquedaActiva) profileClone.busquedaActiva=undefined;
-        if(!params.posicionActual) profileClone.posicionActual=undefined;
-      if (
-        params.posicionBuscada === profileClone.posicionBuscada &&
-        params.areaBuscada === profileClone.areaBuscada  &&
-        params.señorityActual === profileClone.señorityActual &&
-        params.señorityBuscada === profileClone.señorityBuscada &&
-        params.busquedaActiva === profileClone.busquedaActiva &&
-        params.posicionActual === profileClone.posicionActual
-      ) {
+      if (Object.keys(params).length) {
+        if (!params.posicionBuscada) profileClone.posicionBuscada = undefined;
+        if (!params.areaBuscada) profileClone.areaBuscada = undefined;
+        if (!params.señorityActual) profileClone.señorityActual = undefined;
+        if (!params.señorityBuscada) profileClone.señorityBuscada = undefined;
+        if (!params.busquedaActiva) profileClone.busquedaActiva = undefined;
+        if (!params.posicionActual) profileClone.posicionActual = undefined;
+        if (
+          params.posicionBuscada === profileClone.posicionBuscada &&
+          params.areaBuscada === profileClone.areaBuscada &&
+          params.señorityActual === profileClone.señorityActual &&
+          params.señorityBuscada === profileClone.señorityBuscada &&
+          params.busquedaActiva === profileClone.busquedaActiva &&
+          params.posicionActual === profileClone.posicionActual
+        ) {
+          let prof = {
+            areaBuscada,
+            posicionBuscada,
+            señorityBuscada,
+            empresaActual,
+            posicionActual,
+            señorityActual,
+            linkedin,
+          };
+          return prof;
+        }
+      } else {
         let prof = {
           areaBuscada,
           posicionBuscada,
@@ -94,30 +106,17 @@ const profileClone = Object.create(profile);
           empresaActual,
           posicionActual,
           señorityActual,
-          linkedin
-        };
-        return prof;
-      }}else{
-        let prof = {
-          areaBuscada,
-          posicionBuscada,
-          señorityBuscada,
-          empresaActual,
-          posicionActual,
-          señorityActual,
-          linkedin
+          linkedin,
         };
         return prof;
       }
     });
-      res.status(200);
-  res.json(profiles.filter(Boolean));
+    res.status(200);
+    res.json(profiles.filter(Boolean));
   } catch (e) {
     console.error(e);
     res.status(404);
   }
-
-
 });
 
 routerProfiles.get("/profiles/:id", async (req, res) => {
@@ -138,7 +137,27 @@ routerProfiles.get("/profiles/:id", async (req, res) => {
 routerProfiles.post("/profileadd", async (req, res) => {
   let response;
   try {
-    const add = req.body;
+    const {
+      linkedin,
+      empresaActual,
+      posicionActual,
+      señorityActual,
+      areaBuscada,
+      posicionBuscada,
+      señorityBuscada,
+      busquedaActiva,
+    } = req.body;
+
+    const add = {
+      linkedin,
+      empresaActual,
+      posicionActual,
+      señorityActual,
+      areaBuscada,
+      posicionBuscada,
+      señorityBuscada,
+      busquedaActiva,
+    };
 
     add.enable === "true" ? (add.enable = true) : (add.enable = false);
     add.busquedaActiva === "true"
@@ -152,32 +171,59 @@ routerProfiles.post("/profileadd", async (req, res) => {
   res.json(response);
 });
 
-routerProfiles.put("/profiles/update/:id", async (req, res) => {
+routerProfiles.post("/profiles/update", async (req, res) => {
   let element;
   try {
-    const id = parseInt(req.params.id);
-    const update = req.body;
-    const allElements = await fileManager.getAll();
-    element = allElements.find((ele) => ele.id === id);
-    if (element) {
-      if (update.title && element.title != update.title)
-        element["title"] = update.title;
-      if (update.price && element.price != update.price)
-        element["price"] = update.price;
-      if (update.thumbnail && element.thumbnail != update.thumbnail)
-        element["thumbnail"] = update.thumbnail;
-    }
+    let {
+      linkedin,
+      empresaActual,
+      posicionActual,
+      señorityActual,
+      areaBuscada,
+      posicionBuscada,
+      señorityBuscada,
+      busquedaActiva,
+      clavePrivada,
+    } = req.body;
 
-    fileManager.writeFile(JSON.stringify([...allElements]));
-    res.json({
-      update: "ok",
-      id: req.params.id,
-      newElement: element,
-    });
+    if (linkedin && clavePrivada) {
+      const allElements = await fileManager.getAll();
+      element = allElements.find(
+        (ele) => ele.linkedin === linkedin && ele.clavePrivada === clavePrivada
+      );
+      busquedaActiva === "true"
+        ? (busquedaActiva = true)
+        : (busquedaActiva = false);
+      if (element) {
+        if (empresaActual != undefined) element.empresaActual = empresaActual;
+        if (posicionActual != undefined)
+          element.posicionActual = posicionActual;
+        if (señorityActual != undefined)
+          element.señorityActual = señorityActual;
+        if (areaBuscada != undefined) element.areaBuscada = areaBuscada;
+        if (posicionBuscada != undefined)
+          element.posicionBuscada = posicionBuscada;
+        if (señorityBuscada != undefined)
+          element.señorityBuscada = señorityBuscada;
+        if (busquedaActiva != undefined)
+          element.busquedaActiva = busquedaActiva;
+
+        fileManager.writeFile(JSON.stringify([...allElements]));
+        res.status(200).json({
+          update: "ok",
+          id: req.params.id,
+          newElement: element,
+        });
+      } else {
+        res.status(404).json({
+          update: "Error",
+          message: "Linkedin y/o clave incorrecta",
+        });
+      }
+    }
   } catch (e) {
     console.error(e);
   }
-  console.log(element);
 });
 
 routerProfiles.get("/profilesRandom", async (req, res) => {
